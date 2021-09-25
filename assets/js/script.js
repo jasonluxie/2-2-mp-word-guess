@@ -58,7 +58,7 @@ function letterGuess(event) {
     //Goes through every index of the array wordGuess[]
     for (i = 0; i < wordGuess.length; i++) {
         if (wordGuess[i].toLowerCase() == key) {
-            letterHolder[i].textContent = guessWord[i];
+            letterHolder[i].textContent = wordGuess[i];
         }
     }
 }
