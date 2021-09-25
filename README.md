@@ -4,6 +4,10 @@
 
 Try to guess the word! The words you can guess are apple, banana, and pineapple. 
 
+## Deployed page
+
+https://jasonluxie.github.io/2-2-mp-word-guess/
+
 ## Notes
 
 Early concept right now. Game does not continue if you guess the word or if you run out of time. 
