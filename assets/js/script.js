@@ -5,7 +5,7 @@ let startButton = document.querySelector("#start");
 let wordHolder = document.querySelector("#word");
 
 
-let wordArray = ["Banana"];
+let wordArray = ["Banana", "Apple", "Pineapple"];
 
 const guessWord = wordArray[randomInt(wordArray.length)].split("");
 //Event listner for tracking keystrokes
@@ -14,13 +14,10 @@ document.addEventListener("keydown", letterGuess);
 //Clicking the start game button will run the function "startGame()"
 startButton.addEventListener("click", startGame());
 
-//TEST BUTTON TO TRIGGER ANYTHING
-let testButton = document.querySelector("#test-button");
-testButton.addEventListener("click", wordGame());
-
 function startGame() {
     let timer = document.querySelector("#timer");
     let time = wordArray.length * 30000;
+    wordGame()
     //Timer function
     setInterval(function () {
         if (time > 0) {
@@ -31,7 +28,10 @@ function startGame() {
             timer.textContent = minutes + ":" + seconds;
         }
         if (time <= 0) {
-            return;
+            var playAgain = confirm("You ran out of time! Do you want to play again?")
+            if (playAgain == true) {
+                time = wordArray.length * 30000;
+            }
         }
     }, 1000);
 }
@@ -51,16 +51,14 @@ function wordGame() {
         wordHolder.appendChild(letterBox());
     }
 }
-let letterHolder = document.querySelector(".letter")
 
+let letterHolder = wordHolder.children
 function letterGuess(event) {
+    let key = event.key.toLowerCase();
     //Goes through every index of the array guessWord[]
     for (i = 0; i < guessWord.length; i++) {
-        let key = event.key;
-        console.log(key.toLowerCase());
-        if (guessWord[i].toLowerCase == key.toLowerCase()) {
-            letterHolder.textContent = guessWord[i];
+        if (guessWord[i].toLowerCase() == key) {
+            letterHolder[i].textContent = guessWord[i];
         }
-        console.log(guessWord[i])
     }
 }

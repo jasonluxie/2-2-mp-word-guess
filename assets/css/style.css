@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 #word div {
-    background-color: orange;
+    background-color: whitesmoke;
     margin: 0 1.5rem;
     padding:1rem;
     display: hidden;
