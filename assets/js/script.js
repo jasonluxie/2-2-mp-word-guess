@@ -2,20 +2,24 @@ let gameWins = 0;
 let gameLoss = 0;
 //sets startButton to "start" <button> from html
 let startButton = document.querySelector("#start");
-
-let timer = document.querySelector("#timer");
 let wordHolder = document.querySelector("#word");
 
-let wordArray = ["Banana", "Apple", "Pineapple"];
+
+let wordArray = ["Banana"];
+
+const guessWord = wordArray[randomInt(wordArray.length)].split("");
+//Event listner for tracking keystrokes
+document.addEventListener("keydown", letterGuess);
+
+//Clicking the start game button will run the function "startGame()"
+startButton.addEventListener("click", startGame());
 
 //TEST BUTTON TO TRIGGER ANYTHING
 let testButton = document.querySelector("#test-button");
-testButton.addEventListener("click", wordSplit());
-
-//Clicking the start game button will run the function "startGame()"
-// startButton.addEventListener("click", startGame());
+testButton.addEventListener("click", wordGame());
 
 function startGame() {
+    let timer = document.querySelector("#timer");
     let time = wordArray.length * 30000;
     //Timer function
     setInterval(function () {
@@ -36,16 +40,27 @@ function randomInt(maxLength) {
     return Math.floor(Math.random() * maxLength);
 }
 
-function wordSplit() {
-    const guessWord = wordArray[randomInt(wordArray.length)].split("");
-    console.log(guessWord);
+function wordGame() {
     //Creating <div> of each letter
     for (i = 0; i <= guessWord.length - 1; i++) {
-        function insertLetter() {
-            let letterDiv = document.createElement("div")
-            letterDiv.textContent = guessWord[i]
-            return letterDiv
+        function letterBox() {
+            let letterDiv = document.createElement("div");
+            letterDiv.classList.add("letter")
+            return letterDiv;
         }
-        wordHolder.appendChild(insertLetter());
+        wordHolder.appendChild(letterBox());
+    }
+}
+let letterHolder = document.querySelector(".letter")
+
+function letterGuess(event) {
+    //Goes through every index of the array guessWord[]
+    for (i = 0; i < guessWord.length; i++) {
+        let key = event.key;
+        console.log(key.toLowerCase());
+        if (guessWord[i].toLowerCase == key.toLowerCase()) {
+            letterHolder.textContent = guessWord[i];
+        }
+        console.log(guessWord[i])
     }
 }
