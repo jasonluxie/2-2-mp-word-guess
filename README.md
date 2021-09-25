@@ -1,8 +1,12 @@
 # 2-2-mp-word-guess
 
-# Unit 04 Mini-Project: Word Guess
+## Description
 
-In this activity, you will work with a group to build a game using JavaScript and Web APIs.
+Try to guess the word! The words you can guess are apple, banana, and pineapple. 
+
+## Notes
+
+Early concept right now. Game does not continue if you guess the word or if you run out of time. 
 
 ## Logic
 
