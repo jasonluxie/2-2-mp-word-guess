@@ -6,7 +6,7 @@ let wordHolder = document.querySelector("#word");
 
 let wordArray = ["Banana", "Apple", "Pineapple"];
 
-const guessWord = wordArray[randomInt(wordArray.length)].split("");
+const wordGuess = wordArray[randomInt(wordArray.length)].split("");
 //Event listner for tracking keystrokes
 document.addEventListener("keydown", letterGuess);
 
@@ -42,7 +42,7 @@ function randomInt(maxLength) {
 
 function wordGame() {
     //Creating <div> of each letter
-    for (i = 0; i <= guessWord.length - 1; i++) {
+    for (i = 0; i <= wordGuess.length - 1; i++) {
         function letterBox() {
             let letterDiv = document.createElement("div");
             letterDiv.classList.add("letter");
@@ -55,9 +55,9 @@ function wordGame() {
 let letterHolder = wordHolder.children;
 function letterGuess(event) {
     let key = event.key.toLowerCase();
-    //Goes through every index of the array guessWord[]
-    for (i = 0; i < guessWord.length; i++) {
-        if (guessWord[i].toLowerCase() == key) {
+    //Goes through every index of the array wordGuess[]
+    for (i = 0; i < wordGuess.length; i++) {
+        if (wordGuess[i].toLowerCase() == key) {
             letterHolder[i].textContent = guessWord[i];
         }
     }
