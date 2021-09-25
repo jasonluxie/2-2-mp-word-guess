@@ -51,7 +51,7 @@ function wordGame() {
         wordHolder.appendChild(letterBox());
     }
 }
-let letterHolder = document.querySelector(".letter")
+
 
 function letterGuess(event) {
     //Goes through every index of the array guessWord[]
