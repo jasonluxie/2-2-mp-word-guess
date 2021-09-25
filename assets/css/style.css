@@ -1,0 +1,9 @@
+#word {
+    display: flex;
+    flex-direction: row;
+}
+#word div {
+    background-color: orange;
+    margin: 0 1.5rem;
+    padding:1rem;
+}
